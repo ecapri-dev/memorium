@@ -130,15 +130,3 @@ _Por qué la descarté:_ Es cierto que mi sistema tiene rasgos de sistema críti
 
 ---
 
-## Antes de entregar
-
-- [x] La descripción del apartado 1 se entiende sin ser del área
-- [x] Hay al menos dos tipos de usuario con necesidades distintas
-- [x] Identifiqué un conflicto real entre usuarios
-- [x] El alcance dice qué queda fuera, no solo qué queda dentro
-- [x] Las exclusiones son específicas, no genéricas
-- [x] Identifiqué el tipo de sistema y al menos dos atributos de calidad
-- [x] Anoté al menos tres reglas de negocio no obvias
-- [x] Justifiqué el ciclo de vida contra dos alternativas descartadas
-- [ ] El documento está en mi repositorio y se puede leer desde el navegador
-- [x] Borré todas las instrucciones en cursiva de la plantilla
