@@ -2,7 +2,7 @@
 
 **Autor:** Emiliano Cabañas Prieto
 **Fecha de la última versión:** 2026-09-03
-**Repositorio:** _(pega aquí la URL de tu repo)_
+**Repositorio:** _https://github.com/ecapri-dev/alerta_vecinal/_
 
 ---
 
