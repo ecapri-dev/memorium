@@ -1,7 +1,7 @@
 # Visión del producto
 
 - **Autor:** Emiliano Cabañas Prieto
-- **Fecha de la última versión:** 2026-09-10
+- **Fecha de la última versión:** 2026-09-06
 - **Repositorio:** https://github.com/ecapri-dev/memorium/
 
 ---
