@@ -125,8 +125,6 @@ Pero la parte que guarda las condiciones de liberación vive en una red pública
 
 Mi alcance está cerrado y escrito, con seis exclusiones explícitas, y puedo comprometerme a que no va a cambiar durante el semestre.
 
-Mi cliente no está disponible para iterar conmigo cada semana. No tengo usuarios reales usando Memorium y dándome retroalimentación continua.
-
 El riesgo de este proyecto es de un tipo particular, y es lo que decide el modelo: la probabilidad de falla es baja, pero las consecuencias son graves e irreversibles. Un error en las condiciones de liberación no se arregla en la siguiente versión, porque para entonces la cápsula ya se abrió o ya se perdió.
 
 Y sí hay necesidad de auditoría. Cualquier sistema que maneje llaves de acceso a fondos de terceros necesita que alguien externo verifique formalmente que hace lo que dice hacer, y esa verificación necesita evidencia documentada por cada etapa.
