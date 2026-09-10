@@ -12,7 +12,7 @@
 
 **Descripción:**
 
-Memorium es una aplicación donde una persona deja preparado lo que quiere que su familia reciba cuando muera: desde las llaves para acceder a su dinero digital hasta cartas, fotos y documentos personales. Todo eso se guarda cifrado dentro de una cápsula que nadie puede abrir mientras el titular siga vivo.
+Memorium es una aplicación donde una persona crea capsulas con un beneficiario, con el propocito de que este acceda en determinado tiempo: desde las llaves para acceder a su dinero digital hasta cartas, fotos y documentos personales. Todo eso se guarda cifrado dentro de una cápsula que nadie puede abrir mientras el titular siga vivo.
 
 Para confirmar que el titular falleció, el sistema exige dos señales al mismo tiempo. La primera es que la persona haya dejado de entrar a la aplicación durante el plazo que ella misma configuró. La segunda es que las personas de confianza que nombró lo confirmen. Cuando se cumplen ambas, el sistema todavía espera: avisa al titular por todos los medios que registró y le da un plazo para cancelar, por si hubo un error. Solo si ese plazo vence sin respuesta, la cápsula se abre para los herederos.
 
@@ -89,7 +89,7 @@ Hay una consecuencia bonita de esa decisión: al no tocar los fondos, Memorium p
 
 ## 4. Tipo de sistema y restricciones
 
-**Tipo de sistema:** Web y SaaS, con exigencias de sistema crítico.
+**Tipo de sistema:** SaaS, con exigencias de sistema crítico.
 
 **Por qué es de ese tipo:**
 
