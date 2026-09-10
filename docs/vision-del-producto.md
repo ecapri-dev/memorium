@@ -2,7 +2,7 @@
 
 - **Autor:** Emiliano Cabañas Prieto
 - **Fecha de la última versión:** 2026-09-10
-- **Repositorio:** https://github.com/ecapri-dev/alerta_vecinal/
+- **Repositorio:** https://github.com/ecapri-dev/memorium/
 
 ---
 
