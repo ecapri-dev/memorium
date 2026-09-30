@@ -2,7 +2,7 @@
 
 - **Sistema:** Memorium
 - **Autor:** Emiliano Cabañas Prieto
-- **Versión:** 1.0
+- **Versión:** 1.1
 - **Fecha de la última actualización:** 30-09-2026
 
 ---
@@ -34,17 +34,18 @@ Dentro del alcance: crear y editar la cápsula, asignar elementos a herederos, n
 
 | Usuario | Qué hace hoy sin el sistema | Qué espera del sistema |
 |---|---|---|
-| Titular | Guarda su frase de recuperación en un papel, una caja fuerte o su memoria. A veces se la dice a un familiar, la deja en un sobre o la mete en un testamento. Muchas veces no hace nada. | Dejar preparada su herencia digital sin darle el control de su dinero a nadie mientras viva, y poder cambiarla cuando quiera. |
-| Heredero | Si nadie le dejó la frase, pierde el acceso para siempre. Si se la dejaron, muchas veces no sabe qué hacer con ella. | Enterarse de que hay algo para él y poder usarlo sin trámites imposibles ni conocimientos técnicos. |
-| Guardián | Hoy no existe como rol: es el familiar o amigo al que le toca "saber dónde está el papel". | Entender qué se espera de él, confirmar de forma sencilla y no cargar con la culpa si algo sale mal. |
+| Titular | Guarda su frase de recuperación donde le queda a la mano: un papel, una caja fuerte o, si es joven, una captura de pantalla o las notas del mismo celular. Casi nunca se la dice a nadie. En el caso entrevistado, sus papás ni saben que tiene cripto. | Dejar preparada su herencia digital sin darle el control de su dinero a nadie mientras viva, y poder cambiarla cuando quiera. |
+| Heredero | Si nadie le dejó la frase, pierde el acceso para siempre. Muchas veces ni sabe que ese dinero existe, y si recibe la frase no sabe qué hacer con ella. | Enterarse de que hay algo para él y poder usarlo sin trámites imposibles ni conocimientos técnicos. |
+| Guardián | Hoy no existe como rol. Suele ser el mejor amigo o la pareja: la persona que ya sabe que el titular tiene cripto. | Entender qué se espera de él, confirmar de forma sencilla y no cargar con la culpa si algo sale mal. |
 
-> **Pendiente de la entrevista:** esta tabla se corrige con lo que salga de la entrevista con mi dupla. Los cambios se anotan en el registro de cambios (sección 7).
+> **Qué cambió después de la entrevista con mi dupla (30-09-2026):** la persona de más confianza del titular también es su heredera (S-03 falso), el titular no entra seguido a una app que no usa a diario (S-01 falso) y el heredero no sabría usar una frase de recuperación (S-08 falso). El detalle está en la [bitácora](guion-entrevista.md) y en el registro de cambios.
 
 **Conflictos identificados entre usuarios:**
 
 1. **Titular contra heredero: seguridad contra certeza.** El titular quiere que la cápsula sea imposible de abrir mientras viva. El heredero quiere la certeza de que se abrirá cuando muera. Cada mecanismo que da certeza al heredero es una forma de abrir antes de tiempo. **Decisión tomada:** se exigen dos condiciones a la vez más un periodo de gracia (RF-010, RF-012, RNF-SEG-003). Priorizo al titular, porque una cápsula abierta antes de tiempo no se puede volver a cerrar, mientras que una cápsula que tarda en abrirse todavía se puede abrir.
 2. **Guardián contra heredero: velocidad contra cautela.** Si el guardián confirma rápido, puede liberar la herencia de alguien vivo. Si duda, la familia espera. **Decisión tomada:** el guardián puede posponer su respuesta sin consecuencias (flujo alterno 3a de CU-05), y ninguna confirmación individual libera nada por sí sola (RF-004).
-3. **Guardián contra heredero: transparencia contra protección.** El heredero necesita saber cómo se liberó la cápsula para poder disputarla (RF-019). El guardián teme que lo culpen o lo presionen si se sabe que confirmó. **Pendiente:** no he decidido si el historial muestra el nombre de cada guardián o solo el conteo. Lo pregunto en la entrevista (S-10).
+3. **Guardián contra heredero: transparencia contra protección.** El heredero necesita saber cómo se liberó la cápsula para poder disputarla (RF-019). El guardián teme que lo culpen o lo presionen si se sabe que confirmó. **Pendiente:** no he decidido si el historial muestra el nombre de cada guardián o solo el conteo. No alcanzó a preguntarse en la entrevista (S-10 sin datos).
+4. **La persona de confianza también es heredera.** La entrevista mostró que el guardián natural del titular (su mejor amigo) es también uno de sus herederos. Prohibirlo, como decía la primera versión, lo dejaba sin su guardián; permitirlo sin más deja que quien se beneficia confirme la muerte. **Decisión tomada:** un heredero puede ser guardián, pero al menos una de las N confirmaciones tiene que venir de un guardián que no hereda nada (RF-005).
 
 ---
 
@@ -56,18 +57,18 @@ Dentro del alcance: crear y editar la cápsula, asignar elementos a herederos, n
 |---|---|---|---|
 | RF-001 | Registrar una cápsula | Imprescindible | Supuesto propio |
 | RF-002 | Asignar elementos a cada heredero | Imprescindible | Supuesto propio |
-| RF-003 | Registrar a los guardianes | Imprescindible | Supuesto propio |
+| RF-003 | Registrar a los guardianes | Imprescindible | Entrevista 30-09 |
 | RF-004 | Definir el mínimo de confirmaciones | Imprescindible | Supuesto propio |
-| RF-005 | Separar guardianes de herederos | Imprescindible | Supuesto propio |
+| RF-005 | Exigir un guardián que no herede | Imprescindible | Entrevista 30-09 |
 | RF-006 | Configurar el plazo de inactividad | Imprescindible | Supuesto propio |
 | RF-007 | Reiniciar el contador de inactividad | Imprescindible | Supuesto propio |
 | RF-008 | Solicitar confirmación a los guardianes | Imprescindible | Supuesto propio |
 | RF-009 | Registrar la confirmación de un guardián | Imprescindible | Supuesto propio |
 | RF-010 | Abrir el periodo de gracia | Imprescindible | Supuesto propio |
-| RF-011 | Notificar al titular durante el periodo de gracia | Imprescindible | Supuesto propio |
+| RF-011 | Notificar al titular durante el periodo de gracia | Imprescindible | Entrevista 30-09 |
 | RF-012 | Cancelar la liberación | Imprescindible | Supuesto propio |
 | RF-013 | Liberar los elementos a los herederos | Imprescindible | Supuesto propio |
-| RF-014 | Notificar a los herederos | Importante | Supuesto propio |
+| RF-014 | Notificar a los herederos | Importante | Entrevista 30-09 |
 | RF-015 | Poner la cápsula en alerta | Importante | Supuesto propio |
 | RF-016 | Editar la cápsula | Importante | Supuesto propio |
 | RF-017 | Revocar la cápsula | Importante | Supuesto propio |
@@ -77,8 +78,9 @@ Dentro del alcance: crear y editar la cápsula, asignar elementos a herederos, n
 | RF-021 | Avisar a los guardianes de una cancelación | Deseable | Supuesto propio |
 | RF-022 | Verificar la identidad del guardián | Imprescindible | Supuesto propio |
 | RF-023 | Bloquear confirmaciones tras intentos fallidos | Importante | Supuesto propio |
+| RF-024 | Pedir señal de vida a la mitad del plazo | Imprescindible | Entrevista 30-09 |
 
-> **Nota sobre el Origen:** todos dicen "Supuesto propio" porque salieron de mi Visión del producto, que escribí yo sin hablar con nadie. Los que tienen un código S-xx en su ficha se verifican en la entrevista (ver [guion](guion-entrevista.md)). Después de la entrevista, los confirmados cambian a "Entrevista con [dupla], [fecha]".
+> **Nota sobre el Origen:** "Supuesto propio" quiere decir que salió de mi Visión del producto y nadie lo ha confirmado. "Entrevista 30-09" quiere decir que la entrevista con Rodrigo Valdespino, que hizo de cliente con la ficha de dominio, lo confirmó o lo corrigió (ver [bitácora](guion-entrevista.md)).
 
 ### 3.2 Fichas
 
@@ -107,7 +109,7 @@ Dentro del alcance: crear y editar la cápsula, asignar elementos a herederos, n
 | Campo | Contenido |
 |---|---|
 | Descripción | El sistema registra al menos dos guardianes por cápsula, cada uno con al menos un medio de contacto. |
-| Origen | Supuesto propio (Visión del producto, regla de negocio 1). Se verifica con S-02. |
+| Origen | Entrevista con Rodrigo Valdespino, 30-09-2026: el titular nombró sin dudar a dos personas de confianza (S-02 confirmado). |
 | Prioridad | Imprescindible |
 | Criterio de aceptación | Con un solo guardián registrado, el sistema no activa la cápsula e indica que faltan guardianes. Con dos guardianes, cada uno con un correo o teléfono, la cápsula se activa. Un guardián sin medio de contacto no se guarda. |
 | Relacionado con | RF-004, RF-005, RF-008 |
@@ -122,15 +124,15 @@ Dentro del alcance: crear y editar la cápsula, asignar elementos a herederos, n
 | Criterio de aceptación | Con tres guardianes: N = 1 se rechaza, N = 2 y N = 3 se aceptan, N = 4 se rechaza. En cada rechazo el sistema muestra el rango válido. |
 | Relacionado con | RF-003, RF-010, RF-015, RNF-SEG-002 |
 
-#### RF-005 · Separar guardianes de herederos
+#### RF-005 · Exigir un guardián que no herede
 
 | Campo | Contenido |
 |---|---|
-| Descripción | El sistema impide registrar como guardián a una persona que es heredera de la misma cápsula. |
-| Origen | Supuesto propio (Visión del producto, regla de negocio 3). Se verifica con S-03. |
+| Descripción | El sistema exige que al menos una de las N confirmaciones de fallecimiento provenga de un guardián que no es heredero de la misma cápsula. |
+| Origen | Entrevista con Rodrigo Valdespino, 30-09-2026. La primera versión prohibía que un heredero fuera guardián, pero S-03 resultó falso: la persona de más confianza del titular también es su heredera. |
 | Prioridad | Imprescindible |
-| Criterio de aceptación | Si el correo o el teléfono de un guardián coincide con el de un heredero de la misma cápsula, el sistema no lo guarda y explica el motivo. Aplica en los dos sentidos: tampoco se puede registrar como heredero a un guardián. |
-| Relacionado con | RF-003, RF-009 |
+| Criterio de aceptación | Con N = 2 y solo dos guardianes, ambos herederos, el sistema no activa la cápsula e indica que falta un guardián que no herede. Con N = 2 y tres guardianes (A y B herederos, C no): si confirman A y B, el periodo de gracia no se abre; en cuanto confirma C, se abre. |
+| Relacionado con | RF-003, RF-004, RF-010, RNF-SEG-003 |
 
 #### RF-006 · Configurar el plazo de inactividad
 
@@ -147,10 +149,10 @@ Dentro del alcance: crear y editar la cápsula, asignar elementos a herederos, n
 | Campo | Contenido |
 |---|---|
 | Descripción | El sistema reinicia el contador de inactividad cada vez que el titular da una señal de vida: inicia sesión, edita la cápsula o responde a una notificación de Memorium. |
-| Origen | Supuesto propio (Visión del producto, regla de negocio 4). Se verifica con S-01. |
+| Origen | Supuesto propio (Visión del producto, regla de negocio 4). S-01 resultó falso: el titular no entra seguido a una app que no usa a diario, así que se agregó RF-024. |
 | Prioridad | Imprescindible |
 | Criterio de aceptación | Con el contador en el día 45 de un plazo de 90, cualquiera de las tres acciones regresa el contador a 0 y la cápsula muestra "Última señal de vida: hoy". Consultar la página pública de Memorium sin iniciar sesión no reinicia el contador. |
-| Relacionado con | RF-006, RF-012, RF-016 |
+| Relacionado con | RF-006, RF-012, RF-016, RF-024 |
 
 #### RF-008 · Solicitar confirmación a los guardianes
 
@@ -159,7 +161,7 @@ Dentro del alcance: crear y editar la cápsula, asignar elementos a herederos, n
 | Descripción | El sistema envía una solicitud de confirmación a cada guardián cuando vence el plazo de inactividad del titular. |
 | Origen | Supuesto propio (Visión del producto, descripción del sistema). |
 | Prioridad | Imprescindible |
-| Criterio de aceptación | En el día 90 de un plazo de 90, cada guardián recibe la solicitud en sus medios registrados. En el día 89 ningún guardián la ha recibido. |
+| Criterio de aceptación | En el día 90 de un plazo de 90, el sistema envía la solicitud a cada guardián por sus medios registrados. En el día 89 no se ha enviado ninguna. |
 | Relacionado con | RF-003, RF-009, RF-020 |
 
 #### RF-009 · Registrar la confirmación de un guardián
@@ -187,7 +189,7 @@ Dentro del alcance: crear y editar la cápsula, asignar elementos a herederos, n
 | Campo | Contenido |
 |---|---|
 | Descripción | El sistema notifica al titular por cada medio de contacto registrado cada 72 horas mientras el periodo de gracia está abierto, empezando en el momento en que se abre. |
-| Origen | Supuesto propio (Visión del producto, regla de negocio 2). Se verifica con S-05. |
+| Origen | Entrevista con Rodrigo Valdespino, 30-09-2026: el titular contesta por WhatsApp y casi no ve el correo, así que avisar por un solo medio no basta (S-05 confirmado). |
 | Prioridad | Imprescindible |
 | Criterio de aceptación | Con un titular que registró correo y teléfono, al abrir el periodo de gracia se envía un aviso a cada medio, y se repite a las 72, 144, 216 y 288 horas. Si el titular da señal de vida, los avisos pendientes ya no se envían. |
 | Relacionado con | RF-010, RF-012, RNF-REN-001 |
@@ -217,9 +219,9 @@ Dentro del alcance: crear y editar la cápsula, asignar elementos a herederos, n
 | Campo | Contenido |
 |---|---|
 | Descripción | El sistema notifica a cada heredero que tiene elementos disponibles en el momento en que se liberan. |
-| Origen | Supuesto propio. Se verifica con S-08. |
+| Origen | Entrevista con Rodrigo Valdespino, 30-09-2026: la familia del titular ni sabe que el dinero existe, así que sin este aviso nunca se entera. |
 | Prioridad | Importante |
-| Criterio de aceptación | Al liberarse la cápsula, cada heredero con al menos un elemento asignado recibe un aviso en sus medios registrados en menos de 15 minutos. Un heredero sin elementos no recibe aviso. |
+| Criterio de aceptación | Al liberarse la cápsula, el sistema envía un aviso a cada heredero con al menos un elemento asignado, por sus medios registrados. Un heredero sin elementos no recibe aviso. |
 | Relacionado con | RF-013 |
 
 #### RF-015 · Poner la cápsula en alerta
@@ -280,7 +282,7 @@ Dentro del alcance: crear y editar la cápsula, asignar elementos a herederos, n
 | Origen | Supuesto propio (lo agregué para reducir falsas alarmas por viajes o descuidos). Se verifica con S-01. |
 | Prioridad | Importante |
 | Criterio de aceptación | Con un plazo de 90 días y la última señal de vida en el día 0, el titular recibe el recordatorio en el día 83. Si da señal de vida antes del día 83, no lo recibe. |
-| Relacionado con | RF-006, RF-007, RF-008 |
+| Relacionado con | RF-006, RF-007, RF-008, RF-024 |
 
 #### RF-021 · Avisar a los guardianes de una cancelación
 
@@ -312,6 +314,16 @@ Dentro del alcance: crear y editar la cápsula, asignar elementos a herederos, n
 | Criterio de aceptación | Al tercer intento fallido, la pantalla informa el bloqueo y la hora en que termina. Durante esas 24 horas ningún intento de ese guardián se acepta, aunque sea correcto. |
 | Relacionado con | RF-022 |
 
+#### RF-024 · Pedir señal de vida a la mitad del plazo
+
+| Campo | Contenido |
+|---|---|
+| Descripción | El sistema pide al titular una señal de vida cuando ha transcurrido la mitad de su plazo de inactividad. |
+| Origen | Entrevista con Rodrigo Valdespino, 30-09-2026. S-01 resultó falso: el titular abre el exchange varias veces al día, pero la wallet que no usa a diario la abre cada dos o tres meses. Esperar a que entre a Memorium por su cuenta no basta. |
+| Prioridad | Imprescindible |
+| Criterio de aceptación | Con un plazo de 90 días y la última señal de vida en el día 0, en el día 45 el sistema envía la solicitud por todos los medios del titular. Si responde, el contador vuelve a 0 (RF-007). Si dio señal de vida antes del día 45, no recibe la solicitud. |
+| Relacionado con | RF-006, RF-007, RF-020 |
+
 ---
 
 ## 4. Requisitos no funcionales
@@ -334,8 +346,8 @@ Memorium es un sistema **SaaS con exigencias de sistema crítico** (Visión del 
 | RNF-REN-001 | Rendimiento | Envío oportuno de avisos de gracia | Imprescindible | Derivado del tipo de sistema |
 | RNF-REN-002 | Rendimiento | Tiempo de despliegue de la solicitud | Importante | Derivado del tipo de sistema |
 | RNF-ESC-001 | Escalabilidad | Capacidad con muchos titulares | Importante | Derivado del tipo de sistema |
-| RNF-USA-001 | Usabilidad | Guardián confirma sin ayuda | Imprescindible | Supuesto propio |
-| RNF-USA-002 | Usabilidad | Heredero accede sin ayuda | Imprescindible | Supuesto propio |
+| RNF-USA-001 | Usabilidad | Guardián confirma sin ayuda | Imprescindible | Entrevista 30-09 |
+| RNF-USA-002 | Usabilidad | Heredero accede sin ayuda | Imprescindible | Entrevista 30-09 |
 
 ### 4.2 Fichas
 
@@ -466,7 +478,7 @@ Memorium es un sistema **SaaS con exigencias de sistema crítico** (Visión del 
 | Atributo de calidad | Usabilidad |
 | Descripción | Un guardián sin experiencia en criptomonedas registra su confirmación sin ayuda de nadie. |
 | Métrica | En una prueba con 5 personas sin experiencia en criptomonedas, al menos 4 completan CU-05 en menos de 5 minutos sin hacer preguntas. |
-| Origen | Supuesto propio (el guardián promedio no conoce el tema). Se verifica con S-02. |
+| Origen | Entrevista con Rodrigo Valdespino, 30-09-2026: una de las dos personas de confianza del titular no sabe nada de cripto (S-02). |
 | Prioridad | Imprescindible |
 | Por qué importa | El guardián no pidió ese papel. Si el proceso lo confunde, lo pospone o pide ayuda a la familia, que es justo quien lo puede presionar. |
 | Afecta a | RF-009, RF-022 |
@@ -478,7 +490,7 @@ Memorium es un sistema **SaaS con exigencias de sistema crítico** (Visión del 
 | Atributo de calidad | Usabilidad |
 | Descripción | Un heredero sin experiencia en criptomonedas accede a los elementos que recibió siguiendo solo las instrucciones del sistema. |
 | Métrica | En una prueba con 5 personas sin experiencia en criptomonedas, al menos 4 abren sus elementos en menos de 15 minutos sin ayuda externa. |
-| Origen | Supuesto propio. Se verifica con S-08. |
+| Origen | Entrevista con Rodrigo Valdespino, 30-09-2026: el heredero del caso entrevistado es un hermano de 16 años que no sabría qué hacer con una frase de recuperación (S-08 falso). |
 | Prioridad | Imprescindible |
 | Por qué importa | Si el heredero recibe una llave que no sabe usar, la herencia se pierde igual que si nunca hubiera existido Memorium. |
 | Afecta a | RF-013, RF-014 |
@@ -502,11 +514,11 @@ Archivo editable: [casos-de-uso.drawio](diagramas/casos-de-uso.drawio)
 
 | ID | Caso de uso | Actores | Requisitos que realiza |
 |---|---|---|---|
-| CU-01 | Preparar la cápsula | Titular | RF-001, RF-002, RF-006, RF-016 |
+| CU-01 | Preparar la cápsula | Titular | RF-001, RF-002, RF-006, RF-016, RNF-SEG-005 |
 | CU-02 | Nombrar a los guardianes | Titular | RF-003, RF-004, RF-005 |
 | CU-03 | Revocar la cápsula | Titular | RF-017, RNF-SEG-005 |
-| CU-04 | Vigilar la inactividad del titular | Tiempo | RF-008, RF-015, RF-018, RF-020 |
-| CU-05 | Confirmar el fallecimiento del titular | Guardián | RF-009, RF-010, RF-011, RF-018, RF-022, RF-023 |
+| CU-04 | Vigilar la inactividad del titular | Tiempo | RF-008, RF-015, RF-018, RF-020, RF-024 |
+| CU-05 | Confirmar el fallecimiento del titular | Guardián | RF-005, RF-009, RF-010, RF-011, RF-018, RF-022, RF-023 |
 | CU-06 | Dar señal de vida | Titular | RF-007, RF-012, RF-021 |
 | CU-07 | Recibir la herencia | Heredero, Tiempo | RF-013, RF-014 |
 | CU-08 | Consultar el historial de la liberación | Heredero | RF-018, RF-019 |
@@ -542,10 +554,11 @@ Lo elegí porque es donde vive el conflicto central del sistema: el guardián ti
 - **2a. El titular dio señal de vida después de que se envió la solicitud.** El sistema muestra que el proceso se canceló porque el titular está activo, no permite confirmar y el caso termina (RF-012, RF-021).
 - **3a. El guardián no tiene certeza.** El guardián elige "Todavía no estoy seguro". El sistema no registra nada, conserva la solicitud abierta y le indica que puede volver cuando quiera. El caso termina sin confirmación.
 - **5a. La verificación de identidad falla.** El sistema permite reintentar. Al tercer intento fallido bloquea la confirmación de ese guardián por 24 horas, le informa la hora en que termina el bloqueo y el caso termina (RF-023).
-- **8a. Esta confirmación alcanza el mínimo N.** El sistema abre el periodo de gracia de 14 días (RF-010), avisa al titular por todos sus medios (RF-011) e informa al guardián que el titular tiene 14 días para responder antes de cualquier liberación.
+- **8a. Esta confirmación alcanza el mínimo N y al menos una viene de un guardián que no hereda.** El sistema abre el periodo de gracia de 14 días (RF-010), avisa al titular por todos sus medios (RF-011) e informa al guardián que el titular tiene 14 días para responder antes de cualquier liberación.
 - **8b. El guardián ya había confirmado antes.** El sistema no suma una segunda confirmación y le muestra la fecha de la primera (RF-009).
+- **8c. Se alcanza N, pero todas las confirmaciones vienen de guardianes herederos.** El sistema registra la confirmación, no abre el periodo de gracia e informa que falta la confirmación de un guardián que no hereda (RF-005).
 
-**Requisitos que realiza:** RF-009, RF-010, RF-011, RF-012, RF-018, RF-021, RF-022, RF-023, RNF-SEG-003, RNF-REN-002, RNF-USA-001.
+**Requisitos que realiza:** RF-005, RF-009, RF-010, RF-011, RF-012, RF-018, RF-021, RF-022, RF-023, RNF-SEG-003, RNF-REN-002, RNF-USA-001.
 
 ---
 
@@ -557,18 +570,18 @@ Prototipo: [enlace a Figma](PEGAR-ENLACE-DE-FIGMA). El prototipo cubre CU-05 com
 |---|---|---|---|---|
 | RF-001 | Supuesto propio | CU-01 | No prototipado | Vigente |
 | RF-002 | Supuesto propio | CU-01 | No prototipado | Vigente |
-| RF-003 | Supuesto propio | CU-02 | No prototipado | Vigente |
+| RF-003 | Entrevista 30-09 | CU-02 | No prototipado | Vigente |
 | RF-004 | Supuesto propio | CU-02 | P-02 Solicitud (muestra "k de N") | Vigente |
-| RF-005 | Supuesto propio | CU-02 | No prototipado | Vigente |
+| RF-005 | Entrevista 30-09 | CU-02, CU-05 · flujo alterno 8c | No prototipado | Modificado tras entrevista |
 | RF-006 | Supuesto propio | CU-01 | No prototipado | Vigente |
 | RF-007 | Supuesto propio | CU-06 | No prototipado | Vigente |
-| RF-008 | Supuesto propio | CU-04 | P-01 Aviso al guardián | Vigente |
+| RF-008 | Supuesto propio | CU-04 | P-01 Aviso al guardián | Modificado tras inspección de la dupla |
 | RF-009 | Supuesto propio | CU-05 | P-05 Confirmación registrada | Vigente |
 | RF-010 | Supuesto propio | CU-05 · flujo alterno 8a | P-06 Periodo de gracia abierto | Vigente |
-| RF-011 | Supuesto propio | CU-05 · flujo alterno 8a | P-06 Periodo de gracia abierto | Vigente |
+| RF-011 | Entrevista 30-09 | CU-05 · flujo alterno 8a | P-06 Periodo de gracia abierto | Vigente |
 | RF-012 | Supuesto propio | CU-06, CU-05 · flujo alterno 2a | P-07 Proceso cancelado | Vigente |
 | RF-013 | Supuesto propio | CU-07 | No prototipado | Vigente |
-| RF-014 | Supuesto propio | CU-07 | No prototipado | Vigente |
+| RF-014 | Entrevista 30-09 | CU-07 | No prototipado | Modificado tras inspección de la dupla |
 | RF-015 | Supuesto propio | CU-04 | No prototipado | Vigente |
 | RF-016 | Supuesto propio | CU-01 | No prototipado | Vigente |
 | RF-017 | Supuesto propio | CU-03 | No prototipado | Vigente |
@@ -578,6 +591,7 @@ Prototipo: [enlace a Figma](PEGAR-ENLACE-DE-FIGMA). El prototipo cubre CU-05 com
 | RF-021 | Supuesto propio | CU-06, CU-05 · flujo alterno 2a | P-07 Proceso cancelado | Vigente |
 | RF-022 | Supuesto propio | CU-05 | P-03 Verificar identidad | Vigente |
 | RF-023 | Supuesto propio | CU-05 · flujo alterno 5a | P-08 Verificación bloqueada | Vigente |
+| RF-024 | Entrevista 30-09 | CU-04 | No prototipado | Nuevo tras entrevista |
 | RNF-SEG-001 | Derivado del tipo de sistema | CU-01, CU-07 | No aplica (sin pantalla) | Vigente |
 | RNF-SEG-002 | Derivado del tipo de sistema | CU-05, CU-07 | No aplica (sin pantalla) | Vigente |
 | RNF-SEG-003 | Derivado del tipo de sistema | CU-05, CU-06, CU-07 | P-04 Confirmación final (explica el periodo de gracia) | Vigente |
@@ -588,10 +602,10 @@ Prototipo: [enlace a Figma](PEGAR-ENLACE-DE-FIGMA). El prototipo cubre CU-05 com
 | RNF-REN-001 | Derivado del tipo de sistema | CU-05 · flujo alterno 8a | No aplica (sin pantalla) | Vigente |
 | RNF-REN-002 | Derivado del tipo de sistema | CU-05 | P-02 Solicitud | Vigente |
 | RNF-ESC-001 | Derivado del tipo de sistema | CU-04, CU-05 | No aplica (sin pantalla) | Vigente |
-| RNF-USA-001 | Supuesto propio | CU-05 | P-02 a P-05 | Vigente |
-| RNF-USA-002 | Supuesto propio | CU-07 | No prototipado | Vigente |
+| RNF-USA-001 | Entrevista 30-09 | CU-05 | P-02 a P-05 | Vigente |
+| RNF-USA-002 | Entrevista 30-09 | CU-07 | No prototipado | Vigente |
 
-**Lo que revela la tabla hoy:** todos los orígenes dicen "Supuesto propio" o "Derivado del tipo de sistema". Ningún requisito está confirmado todavía por una persona. La entrevista es lo que cambia esta columna.
+**Lo que revela la tabla hoy:** siete requisitos ya tienen origen en la entrevista; dos de ellos (RF-005 y RF-024) existen como están gracias a ella. Los que siguen diciendo "Supuesto propio" son preguntas que no se alcanzaron a hacer: S-06, S-07, S-09 y S-10 quedan para una segunda entrevista.
 
 ---
 
@@ -600,37 +614,43 @@ Prototipo: [enlace a Figma](PEGAR-ENLACE-DE-FIGMA). El prototipo cubre CU-05 com
 | Fecha | Requisito | Qué cambió | Por qué |
 |---|---|---|---|
 | 30-09-2026 | Todos | Primera versión del documento | Entrega del parcial de la Unidad 2 |
-| _[fecha]_ | _[ID]_ | _[cambio que salió de la entrevista]_ | _[qué dijo la persona entrevistada]_ |
-| _[fecha]_ | _[ID]_ | _[cambio que salió de la inspección de la dupla]_ | _[hallazgo de la dupla]_ |
+| 30-09-2026 | RF-005 | Antes prohibía que un heredero fuera guardián. Ahora lo permite, pero exige que al menos una de las N confirmaciones venga de un guardián que no hereda. | Entrevista con Rodrigo Valdespino: la persona de más confianza del titular también es su heredera (S-03 falso). |
+| 30-09-2026 | RF-024 | Requisito nuevo: pedir una señal de vida a la mitad del plazo. | Entrevista con Rodrigo Valdespino: el titular abre su wallet cada dos o tres meses; no entraría solo a Memorium (S-01 falso). |
+| 30-09-2026 | RF-003, RF-011, RF-014, RNF-USA-001, RNF-USA-002 | El Origen cambia de "Supuesto propio" a "Entrevista 30-09". | Se confirmaron o se reforzaron en la entrevista (S-02, S-05, S-08). |
+| 30-09-2026 | RF-008 | El criterio ahora comprueba que el sistema envía la solicitud, no que el guardián la recibe. | Inspección de la dupla: la recepción depende de servicios externos y no se puede probar dentro del sistema. |
+| 30-09-2026 | RF-014 | Se quitó el límite de 15 minutos del criterio de aceptación. | Inspección de la dupla: un límite de tiempo es un requisito no funcional y no va dentro de uno funcional. |
+| 30-09-2026 | CU-01 | Se agregó RNF-SEG-005 a los requisitos que realiza. | Inspección de la dupla: la tabla de trazabilidad lo ligaba a CU-01 y la tabla de casos de uso no. |
 
 ---
 
 ## 8. Revisión de la dupla
 
-- **Revisó:** _[nombre de la dupla]_
-- **Fecha de la inspección:** _[dd-mm-2026]_
+- **Revisó:** Rodrigo Valdespino Vertiz (00520621)
+- **Fecha de la inspección:** 30-09-2026
 - **Método:** lectura del documento con la lista de verificación de la clase "Validación, cambio y prototipos". Quien inspecciona señala; el autor decide qué cambia.
 
-**Lista de verificación** (lo que quede sin marcar es un hallazgo):
+**Lista de verificación** (estado después de corregir los hallazgos):
 
-- [ ] Cada requisito expresa una sola idea, sin "y" que una dos comportamientos
-- [ ] Usa formulación firme, sin debería, podría ni de preferencia
-- [ ] No impone una solución técnica
-- [ ] Los no funcionales tienen métrica, no adjetivos
-- [ ] Cada requisito funcional tiene criterio de aceptación
-- [ ] El criterio se podría convertir en una prueba concreta mañana mismo
-- [ ] Ningún requisito admite dos interpretaciones distintas
-- [ ] Los términos del dominio se usan siempre con el mismo significado
-- [ ] Hay al menos un no funcional por cada atributo que impone el tipo de sistema
-- [ ] Ningún par de requisitos se contradice
-- [ ] Todos los requisitos caben dentro del alcance declarado
-- [ ] Los conflictos entre usuarios están resueltos o marcados como pendientes
-- [ ] Cada requisito tiene identificador único
-- [ ] El campo Origen distingue lo confirmado de lo supuesto
-- [ ] Cada caso de uso corresponde a requisitos del documento, y viceversa
+- [x] Cada requisito expresa una sola idea, sin "y" que una dos comportamientos
+- [x] Usa formulación firme, sin debería, podría ni de preferencia
+- [x] No impone una solución técnica
+- [x] Los no funcionales tienen métrica, no adjetivos
+- [x] Cada requisito funcional tiene criterio de aceptación
+- [x] El criterio se podría convertir en una prueba concreta mañana mismo
+- [x] Ningún requisito admite dos interpretaciones distintas
+- [x] Los términos del dominio se usan siempre con el mismo significado
+- [x] Hay al menos un no funcional por cada atributo que impone el tipo de sistema
+- [x] Ningún par de requisitos se contradice
+- [x] Todos los requisitos caben dentro del alcance declarado
+- [x] Los conflictos entre usuarios están resueltos o marcados como pendientes
+- [x] Cada requisito tiene identificador único
+- [x] El campo Origen distingue lo confirmado de lo supuesto
+- [x] Cada caso de uso corresponde a requisitos del documento, y viceversa
 
 **Hallazgos:**
 
 | # | Requisito | Qué encontró la dupla | Por qué es un problema | Decisión del autor |
 |---|---|---|---|---|
-| 1 | _[ID]_ | _[hallazgo]_ | _[explicación de la dupla]_ | _[corregido / se mantiene y por qué]_ |
+| 1 | RF-008 | El criterio decía que cada guardián "recibe" la solicitud. | Que llegue depende del correo o del teléfono del guardián, no del sistema, así que no se puede probar dentro de él. | Corregido: ahora se comprueba el envío. |
+| 2 | RF-014 | El criterio tenía un límite de 15 minutos. | Un límite de tiempo es un requisito no funcional metido dentro de uno funcional. | Corregido: se quitó el límite. No agregué un no funcional para esto porque la rapidez del aviso a herederos no cambia el resultado. |
+| 3 | CU-01 | La tabla de casos de uso no incluía RNF-SEG-005, aunque la trazabilidad sí lo ligaba a CU-01. | Las dos tablas se contradecían. | Corregido en la tabla de la sección 5.1. |

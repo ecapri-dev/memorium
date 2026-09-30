@@ -2,7 +2,7 @@
 
 - **Sistema:** Memorium
 - **Autor:** Emiliano Cabañas Prieto
-- **A quién se entrevista:** a una persona que tiene criptomonedas y que podría ser titular de una cápsula. En la sesión de clase, este papel lo hace mi dupla con la ficha de dominio de la sección 4.
+- **A quién se entrevista:** a una persona de 21 años que tiene criptomonedas y que podría ser titular de una cápsula. Este papel lo hizo mi dupla, Rodrigo Valdespino, con la ficha de dominio de la sección 4.
 - **Duración:** 10 minutos
 
 ---
@@ -79,75 +79,87 @@ Cada pregunta sale de un requisito que escribí sin que nadie me lo confirmara. 
 
 ## 3. Bitácora de la entrevista
 
-> **Se llena con lo que pasó de verdad.** No se inventa ni se completa con lo que "seguramente habría dicho".
+- **Fecha:** 30-09-2026
+- **Entrevistado:** Rodrigo Valdespino Vertiz, haciendo de titular con la ficha de dominio de la sección 4
+- **Duración:** 10 minutos
+- **Preguntas que alcancé a hacer:** 1, 3, 6, 9, 11, 12, 13, 15 y 18.
 
-- **Fecha:** _[dd-mm-2026]_
-- **Entrevistado:** _[nombre de la dupla]_, haciendo de titular con la ficha de dominio de la sección 4
-- **Duración real:** _[minutos]_
-- **Preguntas que alcancé a hacer:** _[números]_
+### 3.1 Notas de lo que salió
 
-### 3.1 Qué pasó con cada supuesto
+- **Pregunta 1 (contexto).** Empezó en 2023 porque su mejor amigo lo metió. Primero compraba poquito en el exchange; luego pasó una parte a una wallet en el celular "porque en todos lados dicen que si no tienes tus llaves no es tu dinero".
+- **Pregunta 3 (proceso actual).** Lo del exchange depende de su contraseña y de un código que le llega al celular. La frase de la wallet está en una captura de pantalla y en las notas del celular. Cuando le pedí el paso a paso para su familia, se quedó pensando: "Pues primero tendrían que desbloquear mi cel... y mis papás ni saben que tengo esto".
+- **Pregunta 6 (dolores).** Lo tranquiliza que el exchange tiene soporte. Lo que no: "Si pierdo el cel y no tuviera la frase en la nube, pierdo todo lo de la wallet".
+- **Pregunta 9 (excepción).** El año pasado le robaron el celular en un viaje. Pasó dos semanas sin entrar a nada. El exchange lo recuperó con soporte; la wallet, solo porque tenía la frase en las notas de la nube.
+- **Pregunta 11 (S-01).** "El exchange lo abro diario, varias veces. La wallet casi nunca, como cada dos o tres meses."
+- **Pregunta 12 (S-02).** "Mi mejor amigo, sin duda. Y mi novia, aunque ella no sabe nada de cripto." Lo que lo haría dudar de su amigo: "Nada, la neta. Ya sabe todo lo que tengo".
+- **Pregunta 13 (S-03).** "Mi amigo es el único que sabe todo. Y sí, le dejaría una parte; lo demás, a mi hermano."
+- **Pregunta 15 (S-05).** "A mí háblame por WhatsApp. El correo lo veo cada que me acuerdo, y mi mamá ni lo usa."
+- **Pregunta 18 (S-08).** "¿Mi hermano? Tiene 16. No sabría ni qué es eso."
 
-| ID | Qué dijo (resumen o cita corta) | Resultado | Qué cambia en el documento |
+### 3.2 Qué pasó con cada supuesto
+
+| ID | Qué dijo | Resultado | Qué cambia en el documento |
 |---|---|---|---|
-| S-01 | | _Confirmado / Falso / Sin datos_ | |
-| S-02 | | | |
-| S-03 | | | |
-| S-04 | | | |
-| S-05 | | | |
-| S-06 | | | |
-| S-07 | | | |
-| S-08 | | | |
-| S-09 | | | |
-| S-10 | | | |
+| S-01 | La wallet que no usa a diario la abre cada dos o tres meses. | Falso | Entrar a la app no sirve como señal de vida si la app no se usa a diario. Se agregó RF-024: el sistema pide una señal de vida a la mitad del plazo. |
+| S-02 | Nombró sin dudar a su mejor amigo y a su novia. | Confirmado | RF-003 pasa a origen confirmado. Además, su novia no sabe nada de cripto, lo que confirma que RNF-USA-001 es necesario. |
+| S-03 | Su mejor amigo es la persona en quien más confía y también le dejaría una parte. | Falso | RF-005 cambia: ya no prohíbe que un heredero sea guardián, pero exige que al menos una confirmación venga de alguien que no herede. |
+| S-04 | Pasó dos semanas sin entrar a nada cuando le robaron el celular. | Confirmado a medias | El mínimo de 30 días de RF-006 aguanta una ausencia real de dos semanas. El resto del rango no se verificó. |
+| S-05 | Contesta por WhatsApp; el correo casi no lo ve y su mamá no lo usa. | Confirmado | Avisar por todos los medios registrados (RF-011) es necesario, porque el correo solo no llega. |
+| S-06 | No se preguntó. | Sin datos | Sigue como supuesto propio. |
+| S-07 | No se preguntó. | Sin datos | Sigue como supuesto propio. |
+| S-08 | Su hermano de 16 años "no sabría ni qué es eso". | Falso | Confirma que RNF-USA-002 es imprescindible. Abre una duda: ¿qué pasa si el heredero es menor de edad? Validar la herencia ante la ley está fuera del alcance, así que queda como pregunta para diseño. |
+| S-09 | No se preguntó directo, pero salió en la pregunta 6 (ver 3.3). | Sin datos | Sigue como exclusión del alcance. |
+| S-10 | No se preguntó. | Sin datos | El conflicto 3 de la especificación sigue pendiente. |
 
-### 3.2 Lo que apareció y no esperaba
+### 3.3 Lo que apareció y no esperaba
 
-_[Algo que la persona dijo sin que yo lo preguntara, o que no estaba en ningún supuesto. Qué es, por qué no lo vi venir y qué requisito nuevo o modificado produce.]_
+La frase de recuperación vive en el mismo celular: en una captura de pantalla y en las notas. Y cuando le pregunté qué le deja intranquilo, no habló de morirse. Habló de perder el celular: "Lo de morirme lo veo muy lejos. Lo que me da miedo es perder el acceso yo".
 
-### 3.3 Qué funcionó y qué no del guion
+Yo diseñé Memorium pensando en la muerte, y para alguien de 21 años el miedo real es perder el acceso en vida. Justo eso lo dejé fuera a propósito: Memorium no recupera la llave maestra del titular. No lo meto al alcance, porque si el sistema pudiera recuperarle el acceso también podría abrir su cápsula. Pero cambia cómo hay que presentar el producto a gente joven, y lo dejo como duda abierta para diseño.
 
-- **Pregunta que mejor funcionó:** _[número y por qué]_
-- **Pregunta que no funcionó:** _[número y por qué: se contestó con una palabra, la persona no la entendió, sugería algo]_
+### 3.4 Qué funcionó y qué no del guion
+
+- **La que mejor funcionó:** la 3. Pedir el paso a paso hizo que la persona se diera cuenta sola de que su familia ni siquiera podría desbloquear el celular.
+- **La que peor funcionó:** la 13. Pregunta dos cosas a la vez (quién sabe y qué relación tiene con los herederos) y la respuesta mezcló ambas. Conviene partirla en dos.
 
 ---
 
 ## 4. Ficha de dominio para mi dupla
 
-> Esta ficha es la que le entregué a mi dupla para que hiciera de cliente. Le da lo suficiente para responder con coherencia, sin decirle qué contestar.
+> Esta es la ficha que le entregué a mi dupla para que hiciera de cliente. Le da lo suficiente para responder con coherencia, sin decirle qué contestar.
 
 **Ficha de dominio · Persona con criptomonedas**
 _Para quien hace de cliente_
 
 **Quién eres**
 
-Tienes 34 años y trabajas como gerente de proyectos en una empresa de logística en Querétaro. Empezaste a comprar criptomonedas en 2021 porque un compañero de trabajo te lo recomendó. Hoy tienes el equivalente a unos 180,000 pesos, repartidos en dos lugares: una parte en un exchange (una plataforma donde compras y vendes, que guarda las llaves por ti, parecido a un banco) y otra parte en una wallet propia en un dispositivo físico que guardas en tu casa. Vives con tu pareja. Tienes un hermano, una hermana y a tu mamá.
+Tienes 21 años y estudias séptimo semestre de ingeniería en Querétaro. Haces trabajos de diseño freelance y de ahí sacas para tus cosas. Empezaste con cripto en 2023 porque tu mejor amigo te metió. Hoy tienes unos 25,000 pesos: la mayor parte en un exchange (una app que guarda las llaves por ti, como un banco) y otra parte en una wallet en tu celular. Vives con tus papás y tu hermano menor. Tienes novia desde hace dos años.
 
 **Lo que necesitas saber del tema**
 
-- En el exchange entras con usuario, contraseña y un código de una app de autenticación en tu celular.
-- La wallet propia se respalda con una frase de recuperación de 24 palabras. Quien tenga esa frase controla ese dinero, y si se pierde nadie lo puede recuperar: no hay soporte técnico ni banco al que llamar.
+- Al exchange entras con contraseña y un código que te llega al celular.
+- La wallet del celular tiene una frase de recuperación de 12 palabras. Quien la tenga controla ese dinero. Si se pierde, nadie lo recupera.
 
-**Cómo es tu relación con tu dinero digital**
+**Tu relación con tu dinero digital**
 
-Revisas precios casi todos los días desde la app del exchange. La wallet física la conectas pocas veces, cuando compras algo para guardarlo a largo plazo.
+Abres el exchange varias veces al día para ver precios. La wallet casi no la abres.
 
-**Reglas que conoces y no vas a decir si no te preguntan**
+**Reglas que conoces y no dices si no te preguntan**
 
-- La persona en la que más confías es tu pareja, y también es a quien le dejarías casi todo.
-- Tu hermano sabe que tienes cripto, pero no sabe dónde ni cuánto. Tu mamá y tu hermana no saben nada.
-- La frase de 24 palabras está escrita en una hoja dentro de un libro en tu casa. Nadie más sabe cuál libro.
-- Tu mamá no usa correo electrónico. Solo contesta WhatsApp y llamadas.
-- Si tu pareja encontrara la frase, no sabría qué hacer con ella.
+- Tu mejor amigo sabe todo lo que tienes. Es en quien más confías, y le dejarías una parte.
+- Tus papás no saben que tienes cripto. Creen que es "una app de inversiones".
+- La frase de 12 palabras está en una captura de pantalla en tu galería y en las notas del celular.
+- Tu mamá casi no revisa el correo; todo es por WhatsApp.
+- Si te pasara algo, querrías que el resto fuera para tu hermano.
 
-**Una excepción que ocurre a veces**
+**Una excepción que te pasó**
 
-Hace un año cambiaste de celular y perdiste la app de autenticación. Tardaste casi tres semanas en recuperar el acceso al exchange, mandando identificaciones y selfies al soporte. Durante ese tiempo no pudiste ver ni mover nada.
+El año pasado te robaron el celular en un viaje. Estuviste dos semanas sin acceso. El exchange lo recuperaste con soporte. La wallet solo la recuperaste porque tenías la frase en las notas de la nube.
 
-**Lo que te molesta de cómo lo haces hoy**
+**Lo que te molesta**
 
-Sabes que si te pasa algo, tu familia probablemente ni se entera de que el dinero existe. Lo has pensado varias veces pero no has hecho nada, porque hablar de eso con tu pareja te incomoda y siempre lo dejas para después.
+Nunca has pensado en qué pasa con tu dinero si te mueres; lo ves muy lejano. Te preocupa más perder el acceso tú mismo.
 
 **Cómo responder**
 
-Contesta solo lo que te pregunten. No adelantes información aunque sepas que es importante. Si la pregunta se contesta con un sí, contesta sí. Si te preguntan algo que no está en la ficha, invéntalo pero mantenlo coherente con lo demás. Si te preguntan de forma vaga, responde de forma vaga.
+Contesta solo lo que te pregunte. No adelantes nada. Si la pregunta es de sí o no, contesta sí o no. Si te pregunto algo que no está aquí, invéntalo pero que cuadre con lo demás.
