@@ -7,7 +7,7 @@ Autor: Emiliano Cabañas Prieto.
 
 ## Prototipo
 
-**[Prototipo navegable en Figma](PEGAR-ENLACE-DE-FIGMA)**
+**[Prototipo navegable en Figma](https://www.figma.com/proto/ejFUVpWTaoWLcjo895aCtV/Sin-t%C3%ADtulo)** · [archivo de diseño](https://www.figma.com/design/ejFUVpWTaoWLcjo895aCtV/Sin-t%C3%ADtulo)
 
 Recorre el caso de uso CU-05 · Confirmar el fallecimiento del titular, con su escenario principal y sus flujos alternos 2a, 3a, 5a y 8a.
 
