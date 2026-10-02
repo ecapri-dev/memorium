@@ -564,7 +564,7 @@ Lo elegí porque es donde vive el conflicto central del sistema: el guardián ti
 
 ## 6. Trazabilidad
 
-Prototipo: [enlace a Figma](PEGAR-ENLACE-DE-FIGMA). El prototipo cubre CU-05 completo con sus flujos alternos. Los requisitos de otros casos de uso no tienen pantalla en esta versión y así se indica.
+Prototipo: [prototipo navegable en Figma](https://www.figma.com/proto/ejFUVpWTaoWLcjo895aCtV/Sin-t%C3%ADtulo) ([archivo de diseño](https://www.figma.com/design/ejFUVpWTaoWLcjo895aCtV/Sin-t%C3%ADtulo)). El prototipo cubre CU-05 completo con sus flujos alternos. Los requisitos de otros casos de uso no tienen pantalla en esta versión y así se indica.
 
 | Requisito | Origen | Caso de uso | Pantalla del prototipo | Estado |
 |---|---|---|---|---|
