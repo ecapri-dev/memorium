@@ -19,4 +19,5 @@ Recorre el caso de uso CU-05 · Confirmar el fallecimiento del titular, con su e
 | [Guion de entrevista](docs/guion-entrevista.md) | 2 | Preguntas por tramo, bitácora y ficha de dominio |
 | [Especificación de requisitos](docs/especificacion-requisitos.md) | 2 | Requisitos funcionales y no funcionales, casos de uso, trazabilidad y registro de cambios |
 | [Diagrama de casos de uso](docs/diagramas/casos-de-uso.png) | 2 | Diagrama en draw.io ([editable](docs/diagramas/casos-de-uso.drawio)) |
-| [Diagramas de arquitectura](docs/arch/diagramas.md) | 3 | Decisión de arquitectura y 8 diagramas en Mermaid: contexto, contenedores, componentes, flujo, secuencia, clases, estados y entidad-relación |
+| [Diagramas de arquitectura](doc/arch/diagramas.md) | 3 | Diagramas en Mermaid: contexto, contenedores y componentes (C4), más flujo, secuencia, clases, estados y entidad-relación |
+| [ADR-001 · Monolito modular](doc/arch/adr-001-monolito-modular.md) | 3 | Decisión de arquitectura: contexto, opciones consideradas, decisión y consecuencias |
