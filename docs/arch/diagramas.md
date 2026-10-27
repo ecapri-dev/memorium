@@ -21,6 +21,7 @@ Los diagramas están escritos en Mermaid, así que GitHub los dibuja directament
 Quién usa Memorium y con qué sistemas externos habla. No aparece ninguna tecnología.
 
 ```mermaid
+%%{init: {'flowchart': {'htmlLabels': false}}}%%
 flowchart TD
     titular([Titular])
     guardian([Guardián])
@@ -45,6 +46,7 @@ La red pública guarda las condiciones de liberación porque ahí no las puede a
 Las piezas que se despliegan por separado. El `subgraph` marca la frontera: lo de adentro es Memorium, lo de afuera no.
 
 ```mermaid
+%%{init: {'flowchart': {'htmlLabels': false}}}%%
 flowchart TD
     titular([Titular])
     guardian([Guardián])
@@ -81,6 +83,7 @@ El contenido se cifra en el navegador antes de subirlo, así que el almacén sol
 Lo que hay dentro de la API. Liberación es el módulo central, por eso va resaltado.
 
 ```mermaid
+%%{init: {'flowchart': {'htmlLabels': false}}}%%
 flowchart TD
     web[App web]
     reloj[Reloj]
@@ -122,6 +125,7 @@ Dos detalles. Liberación le pregunta a Personas si alguien es guardián y si he
 Qué pasa cuando un guardián intenta confirmar el fallecimiento (CU-05).
 
 ```mermaid
+%%{init: {'flowchart': {'htmlLabels': false}}}%%
 flowchart TD
     ini([Inicio])
     vida{El titular dio señal de vida?}
