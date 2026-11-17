@@ -12,7 +12,7 @@
 
 **Descripción:**
 
-Memorium es una aplicación donde una persona crea capsulas con un beneficiario, con el propocito de que este acceda en determinado tiempo: desde las llaves para acceder a su dinero digital hasta cartas, fotos y documentos personales. Todo eso se guarda cifrado dentro de una cápsula que nadie puede abrir mientras el titular siga vivo.
+Memorium es una aplicación donde una persona crea cápsulas para sus herederos, con el propósito de que accedan a ellas cuando llegue el momento: desde las llaves para acceder a su dinero digital hasta cartas, fotos y documentos personales. Todo eso se guarda cifrado dentro de una cápsula que nadie puede abrir mientras el titular siga vivo.
 
 Para confirmar que el titular falleció, el sistema exige dos señales al mismo tiempo. La primera es que la persona haya dejado de entrar a la aplicación durante el plazo que ella misma configuró. La segunda es que las personas de confianza que nombró lo confirmen. Cuando se cumplen ambas, el sistema todavía espera: avisa al titular por todos los medios que registró y le da un plazo para cancelar, por si hubo un error. Solo si ese plazo vence sin respuesta, la cápsula se abre para los herederos.
 
@@ -110,7 +110,7 @@ Pero la parte que guarda las condiciones de liberación vive en una red pública
 
 1. Una cápsula solo se libera cuando se cumplen las **dos** condiciones a la vez: que el titular haya dejado de dar señal de vida durante el plazo configurado, y que al menos N de sus M guardianes hayan confirmado el fallecimiento. Con una sola de las dos, no pasa nada.
 2. Antes de liberar, el sistema abre un periodo de gracia y notifica al titular por todos los medios que registró. Si el titular responde durante ese periodo, el proceso se cancela por completo y el contador vuelve a cero.
-3. Un guardián no puede ser heredero de la misma cápsula. Quien confirma la muerte no puede ser quien se beneficia de esa confirmación.
+3. Al menos una de las confirmaciones tiene que venir de un guardián que no sea heredero de la misma cápsula. Quien se beneficia no puede ser el único que confirma la muerte. *(Actualizada tras la entrevista del 30-09-2026: la primera versión prohibía que un heredero fuera guardián; ver RF-005.)*
 4. Cualquier edición de la cápsula reinicia el contador de inactividad, porque editarla ya es en sí misma una señal de vida.
 5. Si el número de guardianes disponibles baja del mínimo necesario para confirmar, la cápsula entra en estado de alerta y no puede liberarse hasta que el titular nombre reemplazos.
 6. La llave que abre la cápsula nunca existe completa en un solo lugar: se guarda repartida en fragmentos, de modo que ni el sistema ni un guardián por su cuenta puedan reconstruirla.
