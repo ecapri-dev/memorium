@@ -186,7 +186,7 @@ sequenceDiagram
     Per-->>Lib: Sí es guardián, no hereda
     Lib->>Red: Registra la confirmación N
     Red-->>Lib: Registrada
-    Lib->>Lib: Abre el periodo de gracia de 14 días
+    Lib->>Lib: abrirPeriodoDeGracia()
     Lib->>Avi: Cambio de estado: periodo de gracia
     Avi->>T: Aviso por cada medio registrado
     Lib-->>Web: Confirmación registrada, N de N
@@ -197,21 +197,22 @@ Las flechas sólidas son llamadas y las punteadas son respuestas. Liberación no
 
 ## 6. Diagrama de clases
 
-Las clases del dominio. Elemento es abstracta y cada tipo sabe presentarse solo, que es el patrón Strategy que se identificó en la actividad anterior.
+Las clases del dominio, con la visibilidad de cada atributo y operación y la multiplicidad en los dos extremos de cada relación. Elemento es abstracta y cada tipo sabe presentarse solo, que es el patrón Strategy.
 
 ```mermaid
 classDiagram
     class Titular {
         -nombre: string
-        -mediosDeContacto: List~string~
+        -correo: string
+        -telefono: string
         +darSenalDeVida() void
     }
     class Capsula {
-        -estado: EstadoCapsula
+        -estado: string
         -plazoInactividadDias: int
         -minimoConfirmaciones: int
         -ultimaSenalDeVida: Date
-        +registrarConfirmacion(guardian) void
+        +registrarConfirmacion(g: Guardian) void
         +abrirPeriodoDeGracia() void
         +cancelarLiberacion() void
         +liberar() void
@@ -219,7 +220,7 @@ classDiagram
     class Elemento {
         <<abstract>>
         -contenidoCifrado: bytes
-        +presentar() string
+        +presentar()* string
     }
     class Llave {
         +presentar() string
@@ -235,33 +236,56 @@ classDiagram
     }
     class Heredero {
         -nombre: string
-        -mediosDeContacto: List~string~
+        -contacto: string
     }
     class Guardian {
         -nombre: string
         -telefono: string
         -intentosFallidos: int
         -bloqueadoHasta: Date
-        +verificarIdentidad(codigo) bool
+        +verificarIdentidad(codigo: string) bool
     }
     class Confirmacion {
         -fecha: Date
     }
+    class Evento {
+        -tipo: string
+        -fecha: Date
+        -huella: string
+        +verificar(anterior: Evento) bool
+    }
 
     Titular "1" --> "*" Capsula : crea
-    Capsula "1" --> "1..*" Elemento : contiene
+    Capsula "1" *-- "1..*" Elemento : contiene
+    Capsula "1" *-- "*" Confirmacion : acumula
     Capsula "1" --> "*" Heredero : nombra
     Capsula "1" --> "*" Guardian : nombra
-    Capsula "1" --> "*" Confirmacion : acumula
+    Capsula "1" --> "*" Evento : registra
     Guardian "1" --> "0..1" Confirmacion : emite
     Heredero "1" --> "*" Elemento : recibe
+    Guardian "0..1" -- "0..1" Heredero : puede ser
     Elemento <|-- Llave
     Elemento <|-- Mensaje
     Elemento <|-- Foto
     Elemento <|-- Documento
 ```
 
-El menos es privado y el más es público. `1..*` en Elemento refleja RF-001: una cápsula no se guarda sin al menos un elemento. `0..1` en Confirmación refleja RF-009: cada guardián cuenta una sola vez.
+**Cómo se lee.** El menos es privado y el más es público. El rombo relleno es composición: los elementos y las confirmaciones mueren con su cápsula. Heredero y Guardián van con asociación simple porque son personas que existen aunque la cápsula se revoque. `presentar()` va en cursiva en Elemento porque es abstracta: cada subclase la implementa a su manera.
+
+**De dónde sale cada multiplicidad.** `1..*` en Elemento refleja RF-001: una cápsula no se guarda sin al menos un elemento. `0..1` en Confirmación refleja RF-009: cada guardián cuenta una sola vez. `0..1` en los dos extremos de Guardián y Heredero refleja RF-005: un guardián puede heredar o no, y un heredero puede ser guardián o no.
+
+**La restricción que el diagrama no dibuja.** Una cápsula solo se libera con el plazo vencido, el mínimo de confirmaciones (al menos una de un guardián que no hereda) y el periodo de gracia terminado (RNF-SEG-003).
+
+**Lo que le faltaba y cómo lo descubrí.** La primera versión no tenía ninguna relación entre Guardián y Heredero. Al dibujar el diagrama de secuencia, Liberación le pregunta a Personas "¿es guardián?, ¿hereda?", y con esas clases no había de dónde sacar la segunda respuesta. De ahí salió la asociación "puede ser". Por la misma revisión entró Evento, que es el historial de RF-018: sin esa clase, RNF-SEG-004 (historial inalterable) no tenía dónde vivir.
+
+**Concordancia con la secuencia.** Cada mensaje del diagrama 5 es una operación de esta clase:
+
+| Mensaje en la secuencia | Operación en clases |
+|---|---|
+| `verificarIdentidad(guardián, código)` | `Guardian.verificarIdentidad(codigo)` |
+| `registrarConfirmacion(cápsula, guardián)` | `Capsula.registrarConfirmacion(g)` |
+| `abrirPeriodoDeGracia()` | `Capsula.abrirPeriodoDeGracia()` |
+| "¿Es guardián? ¿Hereda?" | Asociación `Guardian` "puede ser" `Heredero` |
 
 ## 7. Diagrama de estados
 
