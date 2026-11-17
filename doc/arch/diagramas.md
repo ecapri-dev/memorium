@@ -166,38 +166,38 @@ Cada rombo sale de un requisito: RF-012 (señal de vida), RF-023 (bloqueo de 24 
 
 ## 5. Diagrama de secuencia
 
-La confirmación que completa el mínimo y abre el periodo de gracia, de punta a punta.
+La confirmación que completa el mínimo y abre el periodo de gracia, de punta a punta (CU-05, escenario principal con el flujo alterno 8a). Las líneas de vida son objetos del diagrama de clases; en el nivel 3 de C4 esta lógica corre dentro del módulo Liberación.
 
 ```mermaid
 sequenceDiagram
     actor G as Guardián
     participant Web as App web
-    participant Lib as Liberación
-    participant Per as Personas
+    participant Gu as :Guardian
+    participant C as :Capsula
     participant Red as Red Solana
-    participant Avi as Avisos
+    participant Avi as :Avisos
     actor T as Titular
 
     G->>Web: Confirma el fallecimiento
-    Web->>Per: verificarIdentidad(guardián, código)
-    Per-->>Web: Identidad verificada
-    Web->>Lib: registrarConfirmacion(cápsula, guardián)
-    Lib->>Per: Es guardián de esta cápsula? Hereda?
-    Per-->>Lib: Sí es guardián, no hereda
-    Lib->>Red: Registra la confirmación N
-    Red-->>Lib: Registrada
-    Lib->>Lib: abrirPeriodoDeGracia()
-    Lib->>Avi: Cambio de estado: periodo de gracia
+    Web->>Gu: verificarIdentidad(codigo)
+    Gu-->>Web: true
+    Web->>C: registrarConfirmacion(g)
+    C->>Gu: hereda()
+    Gu-->>C: false
+    C->>Red: Registra la confirmación N
+    Red-->>C: Registrada
+    C->>C: abrirPeriodoDeGracia()
+    C->>Avi: notificar(titular, "periodo de gracia")
     Avi->>T: Aviso por cada medio registrado
-    Lib-->>Web: Confirmación registrada, N de N
+    C-->>Web: Confirmación registrada, N de N
     Web-->>G: Muestra que se abrió el periodo de gracia
 ```
 
-Las flechas sólidas son llamadas y las punteadas son respuestas. Liberación no decide sola si alguien es guardián: se lo pregunta a Personas.
+Las flechas sólidas son llamadas y las punteadas son respuestas. La cápsula no supone que el guardián hereda o no: se lo pregunta con `hereda()`, porque RF-005 exige que al menos una confirmación venga de alguien que no hereda. Las únicas flechas que no son operaciones de una clase van hacia afuera: a Solana, que es un sistema externo del diagrama de contexto, y al titular, que es una persona.
 
 ## 6. Diagrama de clases
 
-Las clases del dominio, con la visibilidad de cada atributo y operación y la multiplicidad en los dos extremos de cada relación. Elemento es abstracta y cada tipo sabe presentarse solo, que es el patrón Strategy.
+Las clases del dominio, con la visibilidad de cada atributo y operación y la multiplicidad en los dos extremos de cada asociación. Elemento es abstracta y cada tipo sabe presentarse solo, que es el patrón Strategy. Avisos es una interfaz y AdaptadorMensajeria la implementa para el proveedor real, que es el patrón Adapter.
 
 ```mermaid
 classDiagram
@@ -244,6 +244,7 @@ classDiagram
         -intentosFallidos: int
         -bloqueadoHasta: Date
         +verificarIdentidad(codigo: string) bool
+        +hereda() bool
     }
     class Confirmacion {
         -fecha: Date
@@ -254,6 +255,13 @@ classDiagram
         -huella: string
         +verificar(anterior: Evento) bool
     }
+    class Avisos {
+        <<interface>>
+        +notificar(t: Titular, estado: string) void
+    }
+    class AdaptadorMensajeria {
+        +notificar(t: Titular, estado: string) void
+    }
 
     Titular "1" --> "*" Capsula : crea
     Capsula "1" *-- "1..*" Elemento : contiene
@@ -261,6 +269,7 @@ classDiagram
     Capsula "1" --> "*" Heredero : nombra
     Capsula "1" --> "*" Guardian : nombra
     Capsula "1" --> "*" Evento : registra
+    Capsula "*" --> "1" Avisos : avisa con
     Guardian "1" --> "0..1" Confirmacion : emite
     Heredero "1" --> "*" Elemento : recibe
     Guardian "0..1" -- "0..1" Heredero : puede ser
@@ -268,24 +277,26 @@ classDiagram
     Elemento <|-- Mensaje
     Elemento <|-- Foto
     Elemento <|-- Documento
+    Avisos <|.. AdaptadorMensajeria
 ```
 
-**Cómo se lee.** El menos es privado y el más es público. El rombo relleno es composición: los elementos y las confirmaciones mueren con su cápsula. Heredero y Guardián van con asociación simple porque son personas que existen aunque la cápsula se revoque. `presentar()` va en cursiva en Elemento porque es abstracta: cada subclase la implementa a su manera.
+**Cómo se lee.** El menos es privado y el más es público. El rombo relleno es composición: los elementos y las confirmaciones mueren con su cápsula. Heredero y Guardián van con asociación simple porque son personas que existen aunque la cápsula se revoque. `presentar()` va en cursiva porque es abstracta: cada subclase la implementa a su manera. La flecha punteada con triángulo hueco es realización: AdaptadorMensajeria cumple el contrato de la interfaz Avisos.
 
 **De dónde sale cada multiplicidad.** `1..*` en Elemento refleja RF-001: una cápsula no se guarda sin al menos un elemento. `0..1` en Confirmación refleja RF-009: cada guardián cuenta una sola vez. `0..1` en los dos extremos de Guardián y Heredero refleja RF-005: un guardián puede heredar o no, y un heredero puede ser guardián o no.
 
 **La restricción que el diagrama no dibuja.** Una cápsula solo se libera con el plazo vencido, el mínimo de confirmaciones (al menos una de un guardián que no hereda) y el periodo de gracia terminado (RNF-SEG-003).
 
-**Lo que le faltaba y cómo lo descubrí.** La primera versión no tenía ninguna relación entre Guardián y Heredero. Al dibujar el diagrama de secuencia, Liberación le pregunta a Personas "¿es guardián?, ¿hereda?", y con esas clases no había de dónde sacar la segunda respuesta. De ahí salió la asociación "puede ser". Por la misma revisión entró Evento, que es el historial de RF-018: sin esa clase, RNF-SEG-004 (historial inalterable) no tenía dónde vivir.
+**Lo que le faltaba y cómo lo descubrí.** Al dibujar la secuencia, la cápsula tenía que preguntarle al guardián si hereda, y en la primera versión no había ni la operación `hereda()` ni una relación entre Guardián y Heredero de donde sacar la respuesta. De ahí salieron las dos. En la misma revisión entraron Evento, que es el historial de RF-018 (sin esa clase, RNF-SEG-004 no tenía dónde vivir), y la interfaz Avisos, porque la secuencia llamaba a un aviso que no existía como clase.
 
-**Concordancia con la secuencia.** Cada mensaje del diagrama 5 es una operación de esta clase:
+**Concordancia con la secuencia.** Cada mensaje entre objetos del diagrama 5 es una operación pública de esta página:
 
 | Mensaje en la secuencia | Operación en clases |
 |---|---|
-| `verificarIdentidad(guardián, código)` | `Guardian.verificarIdentidad(codigo)` |
-| `registrarConfirmacion(cápsula, guardián)` | `Capsula.registrarConfirmacion(g)` |
-| `abrirPeriodoDeGracia()` | `Capsula.abrirPeriodoDeGracia()` |
-| "¿Es guardián? ¿Hereda?" | Asociación `Guardian` "puede ser" `Heredero` |
+| `verificarIdentidad(codigo)` | `Guardian.verificarIdentidad(codigo: string) bool` |
+| `registrarConfirmacion(g)` | `Capsula.registrarConfirmacion(g: Guardian) void` |
+| `hereda()` | `Guardian.hereda() bool` |
+| `abrirPeriodoDeGracia()` | `Capsula.abrirPeriodoDeGracia() void` |
+| `notificar(titular, "periodo de gracia")` | `Avisos.notificar(t: Titular, estado: string) void` |
 
 ## 7. Diagrama de estados
 
